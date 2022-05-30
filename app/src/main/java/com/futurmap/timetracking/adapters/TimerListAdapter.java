@@ -15,11 +15,11 @@ import com.futurmap.timetracking.model.TimerState;
 
 import java.util.ArrayList;
 
-public class CardTimerAdapter extends BaseAdapter {
+public class TimerListAdapter extends BaseAdapter {
     private final Context context;
     private final ArrayList<TimerState> cardList;
 
-    public CardTimerAdapter(Context context, ArrayList<TimerState> cardList) {
+    public TimerListAdapter(Context context, ArrayList<TimerState> cardList) {
         this.context = context;
         this.cardList = cardList;
     }

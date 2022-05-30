@@ -1,22 +1,22 @@
 package com.futurmap.timetracking;
 
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
-import com.futurmap.timetracking.adapters.CardTimerAdapter;
+import com.futurmap.timetracking.adapters.TimerListAdapter;
+import com.futurmap.timetracking.adapters.TimerRecyclerAdapter;
 import com.futurmap.timetracking.model.TimerState;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private final int seconds = 0;
     private final ArrayList<TimerState> list = new ArrayList<>();
-
-    // Is the stopwatch running?
-    private boolean running;
+    private RecyclerView rc_timer;
 
     private boolean wasRunning;
 
@@ -25,11 +25,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ListView lvCards = (ListView) findViewById(R.id.list_cards);
-        CardTimerAdapter adapter = new CardTimerAdapter(this, list);
+        // Recycler
+        rc_timer = findViewById(R.id.rc_timer);
         list.add(new TimerState());
         list.add(new TimerState());
-        lvCards.setAdapter(adapter);
+        list.add(new TimerState());
+        TimerRecyclerAdapter timerRecyclerAdapter = new TimerRecyclerAdapter(list);
+        rc_timer.setAdapter(timerRecyclerAdapter);
+
+
+
 //        if (savedInstanceState != null) {
 //
 //            // Get the previous state of the stopwatch
@@ -96,41 +101,5 @@ public class MainActivity extends AppCompatActivity {
 //        running = false;
 //    }
 //
-//    private void runTimer() {
-//        final TextView timeView
-//                = (TextView) findViewById(
-//                R.id.lbl_count);
-//        final Handler handler
-//                = new Handler();
-//
-//        // Call the post() method,
-//        // passing in a new Runnable.
-//        // The post() method processes
-//        // code without a delay,
-//        // so the code in the Runnable
-//        // will run almost immediately.
-//        handler.post(new Runnable() {
-//            @Override
-//
-//            public void run() {
-//                int hours = seconds / 3600;
-//                int minutes = (seconds % 3600) / 60;
-//                int secs = seconds % 60;
-//
-//                // Format the seconds into hours, minutes,
-//                // and seconds.
-//                String time
-//                        = String
-//                        .format(Locale.getDefault(),
-//                                "%d:%02d:%02d", hours,
-//                                minutes, secs);
-//                timeView.setText(time);
-//
-//                if (running) {
-//                    seconds++;
-//                }
-//                handler.postDelayed(this, 1000);
-//            }
-//        });
-//    }
+
 }
