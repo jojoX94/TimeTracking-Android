@@ -8,9 +8,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.futurmap.timetracking.adapters.CardTimerAdapter;
 import com.futurmap.timetracking.model.TimerState;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     private final int seconds = 0;
+    private final ArrayList<TimerState> list = new ArrayList<>();
 
     // Is the stopwatch running?
     private boolean running;
@@ -23,8 +26,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         ListView lvCards = (ListView) findViewById(R.id.list_cards);
-        CardTimerAdapter adapter = new CardTimerAdapter(this, R.layout.card_item);
-        adapter.addAll(new TimerState(), new TimerState());
+        CardTimerAdapter adapter = new CardTimerAdapter(this, list);
+        list.add(new TimerState());
+        list.add(new TimerState());
         lvCards.setAdapter(adapter);
 //        if (savedInstanceState != null) {
 //

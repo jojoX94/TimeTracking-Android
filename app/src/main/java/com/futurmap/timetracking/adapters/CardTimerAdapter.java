@@ -4,7 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,20 +14,14 @@ import com.futurmap.timetracking.R;
 import com.futurmap.timetracking.model.TimerState;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class CardTimerAdapter extends ArrayAdapter<TimerState> {
-    private static final String TAG = "CardArrayAdapter";
-    private final List<TimerState> cardList = new ArrayList<TimerState>();
+public class CardTimerAdapter extends BaseAdapter {
+    private final Context context;
+    private final ArrayList<TimerState> cardList;
 
-    public CardTimerAdapter(@NonNull Context context, int resource) {
-        super(context, resource);
-    }
-
-    @Override
-    public void add(@Nullable TimerState object) {
-        cardList.add(object);
-        super.add(object);
+    public CardTimerAdapter(Context context, ArrayList<TimerState> cardList) {
+        this.context = context;
+        this.cardList = cardList;
     }
 
     @Override
@@ -41,23 +35,23 @@ public class CardTimerAdapter extends ArrayAdapter<TimerState> {
         return this.cardList.get(position);
     }
 
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
     @NonNull
     public View getView(int position, View convertView, ViewGroup container) {
         ViewHolder holder;
         if (convertView == null) {
-            LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-            convertView = inflater.inflate(R.layout.card_item, container, false);
+            convertView = LayoutInflater.from(context).inflate(R.layout.card_item, container, false);
             holder = new ViewHolder(convertView);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-
         TimerState model = getItem(position);
-
-
-        holder.lbl_count.setText(String.valueOf(model.getCurrentTime()));
+        holder.lbl_count.setText(String.valueOf("00:00:00"));
         return convertView;
     }
 
