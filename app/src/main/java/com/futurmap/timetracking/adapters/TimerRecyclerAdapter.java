@@ -57,13 +57,16 @@ public class TimerRecyclerAdapter extends RecyclerView.Adapter<TimerRecyclerAdap
             this.btn_pause = view.findViewById(R.id.btn_pause);
             this.btn_stop = view.findViewById(R.id.btn_stop);
 
+
             runTimer();
+            view.setOnClickListener(view12 -> running = !running);
             this.btn_start.setOnClickListener(view1 -> running = true);
             this.btn_pause.setOnClickListener(view1 -> running = false);
             this.btn_stop.setOnClickListener(view1 -> {
                 running = false;
                 seconds = 0;
             });
+
         }
 
         private void runTimer() {
