@@ -27,7 +27,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/roboto_medium"
-                android:text="New Project"
+                android:text="@string/new_project"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -35,23 +35,24 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/editTextTextPersonName"
+                android:id="@+id/txt_project"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:fontFamily="@font/roboto_light"
+                android:hint="@string/new_project"
+                android:importantForAutofill="no"
                 android:inputType="textPersonName"
                 android:paddingHorizontal="10dp"
-                android:text="New Project"
                 android:textSize="14sp"
-                app:layout_constraintBottom_toTopOf="@+id/button"
+                app:layout_constraintBottom_toTopOf="@+id/btn_create"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView"
                 tools:ignore="TouchTargetSizeCheck" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/btn_create"
                 android:layout_width="100dp"
                 android:layout_height="35dp"
                 android:layout_marginStart="16dp"
@@ -59,13 +60,13 @@
                 android:layout_marginBottom="16dp"
                 android:background="@color/white"
                 android:fontFamily="@font/roboto"
-                android:text="Create"
+                android:text="@string/create"
                 android:textAllCaps="false"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                tools:ignore="TextContrastCheck" />
+                tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

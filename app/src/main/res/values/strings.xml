@@ -3,4 +3,6 @@
     <string name="google_projects">Google projects</string>
     <string name="project">Project</string>
     <string name="website">Website</string>
+    <string name="new_project">New Project</string>
+    <string name="create">Create</string>
 </resources>

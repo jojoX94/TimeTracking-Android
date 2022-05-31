@@ -5,6 +5,8 @@ public class TimerState {
     private long currentTime = 0;
     private String timeSinceStarted;
 
+    
+
     public boolean isPaused() {
         return isPaused;
     }
