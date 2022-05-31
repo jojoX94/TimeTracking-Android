@@ -32,8 +32,8 @@ public class TimerRecyclerAdapter extends RecyclerView.Adapter<TimerRecyclerAdap
     }
 
     @Override
-    public void onBindViewHolder(@NonNull TimerRecyclerAdapter.ViewHolder holder, int position) {
-
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        holder.lbl_project.setText(this.list.get(position).getProject());
     }
 
     @Override
@@ -43,6 +43,7 @@ public class TimerRecyclerAdapter extends RecyclerView.Adapter<TimerRecyclerAdap
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView lbl_count;
+        private final TextView lbl_project;
         private final ImageButton btn_start;
         private final ImageButton btn_pause;
         private final ImageButton btn_stop;
@@ -53,6 +54,7 @@ public class TimerRecyclerAdapter extends RecyclerView.Adapter<TimerRecyclerAdap
         public ViewHolder(View view) {
             super(view);
             this.lbl_count = view.findViewById(R.id.lbl_count);
+            this.lbl_project = view.findViewById(R.id.lbl_project);
             this.btn_start = view.findViewById(R.id.btn_start);
             this.btn_pause = view.findViewById(R.id.btn_pause);
             this.btn_stop = view.findViewById(R.id.btn_stop);
@@ -66,8 +68,8 @@ public class TimerRecyclerAdapter extends RecyclerView.Adapter<TimerRecyclerAdap
                 running = false;
                 seconds = 0;
             });
-
         }
+
 
         private void runTimer() {
             final Handler handler

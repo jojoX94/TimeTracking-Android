@@ -8,7 +8,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.futurmap.timetracking.adapters.TimerRecyclerAdapter;
@@ -36,14 +36,15 @@ public class MainActivity extends AppCompatActivity {
 
     @NonNull
     private TimerRecyclerAdapter getTimerRecyclerAdapter() {
-        list.add(new TimerState());
-        rc_timer.setLayoutManager(new LinearLayoutManager(this));
+        list.add(new TimerState("Node'project"));
+        rc_timer.setLayoutManager(new GridLayoutManager(this, 2));
         TimerRecyclerAdapter timerRecyclerAdapter = new TimerRecyclerAdapter(list);
         rc_timer.setAdapter(timerRecyclerAdapter);
         return timerRecyclerAdapter;
     }
 
     private void addTimer(TimerRecyclerAdapter timerRecyclerAdapter) {
+        txt_project = findViewById(R.id.txt_project);
         btn_create = findViewById(R.id.btn_create);
         btn_create.setOnClickListener(view -> {
             txt_project = findViewById(R.id.txt_project);
@@ -51,8 +52,9 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("String", txt_project.getText().toString());
                 Toast.makeText(this, "Empty field", Toast.LENGTH_SHORT).show();
             } else {
-                list.add(new TimerState());
+                list.add(new TimerState(txt_project.getText().toString()));
                 timerRecyclerAdapter.notifyItemChanged(0);
+                txt_project.setText("");
             }
         });
     }

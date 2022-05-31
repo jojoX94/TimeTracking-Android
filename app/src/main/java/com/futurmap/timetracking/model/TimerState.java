@@ -3,9 +3,14 @@ package com.futurmap.timetracking.model;
 public class TimerState {
     private boolean isPaused = true;
     private long currentTime = 0;
-    private String timeSinceStarted;
+    private String project;
 
-    
+    public TimerState() {
+    }
+
+    public TimerState(String project) {
+        this.project = project;
+    }
 
     public boolean isPaused() {
         return isPaused;
@@ -23,11 +28,11 @@ public class TimerState {
         this.currentTime = currentTime;
     }
 
-    public String getTimeSinceStarted() {
-        return timeSinceStarted;
+    public String getProject() {
+        return project;
     }
 
-    public void setTimeSinceStarted(String timeSinceStarted) {
-        this.timeSinceStarted = timeSinceStarted;
+    public void setProject(String project) {
+        this.project = project;
     }
 }
